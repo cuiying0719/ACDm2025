@@ -1,0 +1,221 @@
+CUDA_VISIBLE_DEVICES=3 nohup python main.py -d ICEWS14 --history-rate 0.3 --train-history-len 9 --test-history-len 9 --dilate-len 1 --lr 0.001 --n-layers 2 --evaluate-every 1 --n-hidden 200 --self-loop --decoder timeconvtranse --encoder convgcn --layer-norm --weight 0.5  --entity-prediction --relation-prediction --add-static-graph --angle 14 --discount 1 --task-weight 0.7 --gpu 0 --loss-weight 0.1 >ICEWS14.txt &
+
+CUDA_VISIBLE_DEVICES=1 nohup python main.py -d YAGO --history-rate 0.3 --train-history-len 1 --test-history-len 1 --dilate-len 1 --lr 0.001 --n-layers 1 --evaluate-every 1 --n-hidden 200 --self-loop --decoder timeconvtranse --encoder convgcn --layer-norm --weight 0.5  --entity-prediction --relation-prediction --angle 10 --discount 1 --task-weight 0.7 --gpu 0 --loss-weight 0.7 --input-dropout 0.0 --hidden-dropout 0.0 --feat-dropout 0.0 >YAGO.txt &（个别超过了）loss-weight试了0.1了效果不好
+CUDA_VISIBLE_DEVICES=1 nohup python main.py -d YAGO --history-rate 0.3 --train-history-len 1 --test-history-len 1 --dilate-len 1 --lr 0.001 --n-layers 1 --evaluate-every 1 --n-hidden 200 --self-loop --decoder timeconvtranse --encoder convgcn --layer-norm --weight 0.5  --entity-prediction --relation-prediction --angle 10 --discount 1 --task-weight 0.7 --gpu 0 --loss-weight 0.7 --input-dropout 0.0 --hidden-dropout 0.0 --feat-dropout 0.0 --beta-end 0.05 >YAGO.txt &
+
+MRR (raw_ent): 0.626968
+Hits (raw_ent) @ 1: 0.508580
+Hits (raw_ent) @ 3: 0.717103
+Hits (raw_ent) @ 10: 0.833555
+MRR (filter_ent): 0.835562
+Hits (filter_ent) @ 1: 0.795088
+Hits (filter_ent) @ 3: 0.872433
+Hits (filter_ent) @ 10: 0.891231
+MRR (raw_rel): 0.931971
+Hits (raw_rel) @ 1: 0.876453
+Hits (raw_rel) @ 3: 0.983481
+Hits (raw_rel) @ 10: 0.996338
+MRR (filter_rel): 0.980021
+Hits (filter_rel) @ 1: 0.971879
+Hits (filter_rel) @ 3: 0.984762
+Hits (filter_rel) @ 10: 0.996338
+中途做的测试：↓
+100%|██████████| 6/6 [00:11<00:00,  1.93s/it]
+MRR (raw_ent): 0.647544
+Hits (raw_ent) @ 1: 0.523070
+Hits (raw_ent) @ 3: 0.741112
+Hits (raw_ent) @ 10: 0.869719
+MRR (filter_ent): 0.880154
+Hits (filter_ent) @ 1: 0.844477
+Hits (filter_ent) @ 3: 0.912913
+Hits (filter_ent) @ 10: 0.928842
+MRR (raw_rel): 0.932887
+Hits (raw_rel) @ 1: 0.876685
+Hits (raw_rel) @ 3: 0.986068
+Hits (raw_rel) @ 10: 0.996155
+MRR (filter_rel): 0.982844
+Hits (filter_rel) @ 1: 0.976056
+Hits (filter_rel) @ 3: 0.986792
+Hits (filter_rel) @ 10: 0.996155
+100%|██████████| 178/178 [03:00<00:00,  1.01s/it]
+Epoch 0005 | Ave Loss: 1.1366 | entity-relation-static:1.2112-0.1927-0.0000 Best MRR 0.6270 | Model YAGO
+
+CUDA_VISIBLE_DEVICES=2 nohup python main.py -d WIKI --history-rate 0.3 --train-history-len 2 --test-history-len 2 --dilate-len 1 --lr 0.001 --n-layers 2 --evaluate-every 1 --n-hidden 200 --self-loop --decoder timeconvtranse --encoder convgcn --layer-norm --weight 0.5  --entity-prediction --relation-prediction --angle 10 --discount 1 --task-weight 0.7 --gpu 0 --loss-weight 0.7 --input-dropout 0.1 --hidden-dropout 0.1 --feat-dropout 0.1 >WIKI.txt &
+MRR (raw_ent): 0.532708
+Hits (raw_ent) @ 1: 0.427907
+Hits (raw_ent) @ 3: 0.602350
+Hits (raw_ent) @ 10: 0.709186
+MRR (filter_ent): 0.819222
+Hits (filter_ent) @ 1: 0.790599
+Hits (filter_ent) @ 3: 0.843673
+Hits (filter_ent) @ 10: 0.859546
+MRR (raw_rel): 0.976251
+Hits (raw_rel) @ 1: 0.959601
+Hits (raw_rel) @ 3: 0.991449
+Hits (raw_rel) @ 10: 0.997675
+MRR (filter_rel): 0.986511
+Hits (filter_rel) @ 1: 0.979811
+Hits (filter_rel) @ 3: 0.991590
+Hits (filter_rel) @ 10: 0.997779
+中途做的测试：↓
+100%|██████████| 10/10 [00:34<00:00,  3.48s/it]
+MRR (raw_ent): 0.531100
+Hits (raw_ent) @ 1: 0.419371
+Hits (raw_ent) @ 3: 0.606972
+Hits (raw_ent) @ 10: 0.720155
+MRR (filter_ent): 0.814772
+Hits (filter_ent) @ 1: 0.775733
+Hits (filter_ent) @ 3: 0.849271
+Hits (filter_ent) @ 10: 0.869720
+MRR (raw_rel): 0.980304
+Hits (raw_rel) @ 1: 0.966503
+Hits (raw_rel) @ 3: 0.992687
+Hits (raw_rel) @ 10: 0.998202
+MRR (filter_rel): 0.989380
+Hits (filter_rel) @ 1: 0.984384
+Hits (filter_rel) @ 3: 0.992798
+Hits (filter_rel) @ 10: 0.998297
+
+
+CUDA_VISIBLE_DEVICES=3 nohup python main.py -d ICEWS14 --history-rate 0.3 --train-history-len 9 --test-history-len 9 --dilate-len 1 --lr 0.001 --n-layers 2 --evaluate-every 1 --n-hidden 200 --self-loop --decoder timeconvtranse --encoder convgcn --layer-norm --weight 0.5  --entity-prediction --relation-prediction --add-static-graph --angle 14 --discount 1 --task-weight 0.7 --gpu 0 --loss-weight 0.1 --input-dropout 0.3 --hidden-dropout 0.2 --feat-dropout 0.2 >ICEWS14.txt &
+MRR(filter ent):0.443957Hits(filter ent)@ 1:0.342157Hits(filter ent)@ 3:0.494895Hits(filter ent)@ 10:0.639200
+
+
+
+CUDA_VISIBLE_DEVICES=3 nohup python main.py -d ICEWS18 --history-rate 0.3 --train-history-len 10 --test-history-len 10 --dilate-len 1 --lr 0.001 --n-layers 2 --evaluate-every 1 --n-hidden 200 --self-loop --decoder timeconvtranse --encoder convgcn --layer-norm --weight 0.5  --entity-prediction --relation-prediction --add-static-graph --angle 10 --discount 1 --task-weight 0.7 --gpu 0 --loss-weight 0.1 >ICEWS18.txt &
+
+
+CUDA_VISIBLE_DEVICES=3 nohup python main.py -d ICEWS14 --history-rate 0.3 --train-history-len 9 --test-history-len 9 --dilate-len 1 --lr 0.001 --n-layers 2 --evaluate-every 1 --n-hidden 200 --self-loop --decoder timeconvtranse --encoder convgcn --layer-norm --weight 0.5  --entity-prediction --relation-prediction --add-static-graph --angle 14 --discount 1 --task-weight 0.7 --gpu 0 --loss-weight 0.1 --input-dropout 0.3 --hidden-dropout 0.2 --feat-dropout 0.2 >ICEWS14.txt &
+
+
+
+CUDA_VISIBLE_DEVICES=3 nohup python main.py -d GDELT --history-rate 0.3 --train-history-len 7 --test-history-len 7 --dilate-len 1 --lr 0.001 --n-layers 2 --evaluate-every 1 --n-hidden 200 --self-loop --decoder timeconvtranse --encoder convgcn --layer-norm --weight 0.5  --entity-prediction --relation-prediction --angle 10 --discount 1 --task-weight 0.7 --gpu 0  --loss-weight 0.7 --input-dropout 0.2 --hidden-dropout 0.2 --feat-dropout 0.2 >GDELT.txt &
+MRR (raw_ent): 0.210042
+Hits (raw_ent) @ 1: 0.129340
+Hits (raw_ent) @ 3: 0.226747
+Hits (raw_ent) @ 10: 0.369651
+MRR (filter_ent): 0.215179
+Hits (filter_ent) @ 1: 0.135462
+Hits (filter_ent) @ 3: 0.231373
+Hits (filter_ent) @ 10: 0.373035
+MRR (raw_rel): 0.220497
+Hits (raw_rel) @ 1: 0.102822
+Hits (raw_rel) @ 3: 0.233560
+Hits (raw_rel) @ 10: 0.475460
+MRR (filter_rel): 0.246864
+Hits (filter_rel) @ 1: 0.140104
+Hits (filter_rel) @ 3: 0.256157
+Hits (filter_rel) @ 10: 0.489502
+
+CUDA_VISIBLE_DEVICES=0 nohup python main.py -d ICEWS18 --history-rate 0.3 --train-history-len 10 --test-history-len 10 --dilate-len 1 --lr 0.001 --n-layers 2 --evaluate-every 1 --n-hidden 200 --self-loop --decoder timeconvtranse --encoder convgcn --layer-norm --weight 0.5  --entity-prediction --relation-prediction --add-static-graph --angle 10 --discount 1 --task-weight 0.7 --gpu 0  --loss-weight 0.7 --input-dropout 0.2 --hidden-dropout 0.2 --feat-dropout 0.2 >ICEWS18.txt &
+MRR (raw_ent): 0.320383
+Hits (raw_ent) @ 1: 0.210392
+Hits (raw_ent) @ 3: 0.365138
+Hits (raw_ent) @ 10: 0.539874
+MRR (filter_ent): 0.336762
+Hits (filter_ent) @ 1: 0.230819
+Hits (filter_ent) @ 3: 0.379943
+Hits (filter_ent) @ 10: 0.547396
+valid
+
+CUDA_VISIBLE_DEVICES=3 nohup python main.py -d ICEWS05-15 --history-rate 0.3 --train-history-len 15 --test-history-len 15 --dilate-len 1 --lr 0.001 --n-layers 2 --evaluate-every 1 --n-hidden 200 --self-loop --decoder timeconvtranse --encoder convgcn --layer-norm --weight 0.5  --entity-prediction --relation-prediction --add-static-graph --angle 10 --discount 1 --task-weight 0.7 --gpu 0 --loss-weight 0.1 --input-dropout 0.3 --hidden-dropout 0.2 --feat-dropout 0.2 >ICEWS0515.txt &
+
+
+
+ICEWS14\ICEWS18\WIKI\YAGO\GDELT
+
+消融
+CUDA_VISIBLE_DEVICES=1 nohup python main.py -d ICEWS14 --history-rate 0.3 --train-history-len 9 --test-history-len 9 --dilate-len 1 --lr 0.001 --n-layers 2 --evaluate-every 1 --n-hidden 200 --self-loop --decoder timeconvtranse --encoder convgcn --layer-norm --weight 0.5  --entity-prediction --relation-prediction --add-static-graph --angle 14 --discount 1 --task-weight 0.7 --gpu 0 --loss-weight 0.1 --input-dropout 0.3 --hidden-dropout 0.2 --feat-dropout 0.2 --name RecurrentRGCN_Ori >RecurrentRGCN_Ori.txt &
+MRR (filter_ent): 0.439298
+Hits (filter_ent) @ 1: 0.337770
+Hits (filter_ent) @ 3: 0.490508
+Hits (filter_ent) @ 10: 0.632053
+
+CUDA_VISIBLE_DEVICES=1 nohup python main.py -d ICEWS14 --history-rate 0.3 --train-history-len 9 --test-history-len 9 --dilate-len 1 --lr 0.001 --n-layers 2 --evaluate-every 1 --n-hidden 200 --self-loop --decoder timeconvtranse --encoder convgcn --layer-norm --weight 0.5  --entity-prediction --relation-prediction --add-static-graph --angle 14 --discount 1 --task-weight 0.7 --gpu 0 --loss-weight 0.1 --input-dropout 0.3 --hidden-dropout 0.2 --feat-dropout 0.2 --name RecurrentRGCN_Decoder >RecurrentRGCN_Decoder.txt &
+MRR (filter_ent): 0.353444
+Hits (filter_ent) @ 1: 0.266563
+Hits (filter_ent) @ 3: 0.392906
+Hits (filter_ent) @ 10: 0.521139
+
+
+
+CUDA_VISIBLE_DEVICES=1 nohup python main.py -d ICEWS14 --history-rate 0.3 --train-history-len 9 --test-history-len 9 --dilate-len 1 --lr 0.001 --n-layers 2 --evaluate-every 1 --n-hidden 200 --self-loop --decoder timeconvtranse --encoder convgcn --layer-norm --weight 0.5  --entity-prediction --relation-prediction --add-static-graph --angle 14 --discount 1 --task-weight 0.7 --gpu 0 --loss-weight 0.1 --input-dropout 0.3 --hidden-dropout 0.2 --feat-dropout 0.2 --name ICEWS14_2 --steps 2 --beta-end 0.1 >ICEWS14_2.txt &  # 扩散步数为2
+MRR (raw_ent): 0.428002
+Hits (raw_ent) @ 1: 0.317189
+Hits (raw_ent) @ 3: 0.486761
+Hits (raw_ent) @ 10: 0.635390
+MRR (filter_ent): 0.440020
+Hits (filter_ent) @ 1: 0.333900
+Hits (filter_ent) @ 3: 0.494466
+Hits (filter_ent) @ 10: 0.638465
+MRR (raw_rel): 0.417740
+Hits (raw_rel) @ 1: 0.267670
+Hits (raw_rel) @ 3: 0.486182
+Hits (raw_rel) @ 10: 0.728243
+MRR (filter_rel): 0.467336
+Hits (filter_rel) @ 1: 0.338602
+Hits (filter_rel) @ 3: 0.521558
+Hits (filter_rel) @ 10: 0.742386
+中途做的测试：↓
+100%|██████████| 51/51 [00:22<00:00,  2.28it/s]
+MRR (raw_ent): 0.416876
+Hits (raw_ent) @ 1: 0.310014
+Hits (raw_ent) @ 3: 0.467176
+Hits (raw_ent) @ 10: 0.623620
+MRR (filter_ent): 0.426320
+Hits (filter_ent) @ 1: 0.322720
+Hits (filter_ent) @ 3: 0.474172
+Hits (filter_ent) @ 10: 0.625775
+MRR (raw_rel): 0.419615
+Hits (raw_rel) @ 1: 0.267282
+Hits (raw_rel) @ 3: 0.489033
+Hits (raw_rel) @ 10: 0.739374
+MRR (filter_rel): 0.469449
+Hits (filter_rel) @ 1: 0.337884
+Hits (filter_rel) @ 3: 0.524732
+Hits (filter_rel) @ 10: 0.750832
+
+
+
+
+
+
+
+
+
+
+
+
+CUDA_VISIBLE_DEVICES=2 python main.py -d ACLED --history-rate 0.3 --train-history-len 9 --test-history-len 9 --dilate-len 1 --lr 0.001 --n-layers 2 --evaluate-every 1 --n-hidden 200 --self-loop --decoder timeconvtranse --encoder convgcn --layer-norm --entity-prediction --task-weight 1 --gpu 0  --weight 0.5 --angle 14 --discount 1 --task-weight 0.7 --loss-weight 0.1 --input-dropout 0.3 --hidden-dropout 0.2 --feat-dropout 0.2 >ACLED.txt &
+
+
+
+
+ CUDA_VISIBLE_DEVICES=2 python main.py -d ICEWS14 --test --multi-step --topk 50 --predict-steps 3 --seed 123 --n-epochs 20 --history-rate 0.3 --train-history-len 9 --test-history-len 9 --dilate-len 1 --lr 0.001 --n-layers 2 --evaluate-every 1 --n-hidden 200 --self-loop --decoder timeconvtranse --encoder convgcn --layer-norm --entity-prediction --task-weight 1 --gpu 0  --weight 0.5 --angle 14 --discount 1 --task-weight 0.7 --lambda1 0.1 --lambda2 0.05 --input-dropout 0.3 --hidden-dropout 0.2 --feat-dropout 0.2 >ICEWS14_t+3.txt &
+
+
+
+
+CUDA_VISIBLE_DEVICES=2 python main.py -d ICEWS14 --test --name RecurrentRGCN_Ori --seed 123 --n-epochs 20 --history-rate 0.3 --train-history-len 9 --test-history-len 9 --dilate-len 1 --lr 0.001 --n-layers 2 --evaluate-every 1 --n-hidden 200 --self-loop --decoder timeconvtranse --encoder convgcn --layer-norm --entity-prediction --task-weight 1 --gpu 0  --weight 0.5 --angle 14 --discount 1 --task-weight 0.7 --lambda1 0.1 --lambda2 0.05 --input-dropout 0.3 --hidden-dropout 0.2 --feat-dropout 0.2 >ICEWS14_REN.txt &
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
